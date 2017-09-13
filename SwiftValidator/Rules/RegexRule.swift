@@ -11,7 +11,7 @@ import Foundation
 /**
  `RegexRule` is a subclass of Rule that defines how a regular expression is validated.
  */
-open class RegexRule : Rule {
+public class RegexRule : Rule {
     /// Regular express string to be used in validation.
     private var REGEX: String = "^(?=.*?[A-Z]).{8,}$"
     /// String that holds error message.
@@ -30,22 +30,22 @@ open class RegexRule : Rule {
     }
     
     /**
-     Method used to validate field.
+     Method used to validate text field.
      
      - parameter value: String to checked for validation.
      - returns: Boolean value. True if validation is successful; False if validation fails.
      */
-    open func validate(_ value: String) -> Bool {
+    public func validate(value: String) -> Bool {
         let test = NSPredicate(format: "SELF MATCHES %@", self.REGEX)
-        return test.evaluate(with: value)
+      return test.evaluate(with: value)
     }
     
     /**
-     Method used to dispaly error message when field fails validation.
+     Method used to dispaly error message when text field fails validation.
      
      - returns: String of error message.
      */
-    open func errorMessage() -> String {
+    public func errorMessage() -> String {
         return message
     }
 }

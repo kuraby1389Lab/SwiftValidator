@@ -21,28 +21,27 @@ public class MinLengthRule: Rule {
     public init(){}
     
     /**
-     Initializes a `MaxLengthRule` object that is to validate the length of the text of a field.
-     
+     Initializes a `MaxLengthRule` object that is to validate the length of the text of a text field
      - parameter length: Minimum character length.
      - parameter message: String of error message.
      - returns: An initialized `MinLengthRule` object, or nil if an object could not be created for some reason that would not result in an exception.
      */
     public init(length: Int, message : String = "Must be at least %ld characters long"){
         self.DEFAULT_LENGTH = length
-        self.message = String(format: message, self.DEFAULT_LENGTH)
+      self.message = NSString(format: message as NSString, self.DEFAULT_LENGTH) as String
     }
     
     /**
-     Validates a field.
+     Validates a text field.
      - parameter value: String to checked for validation.
      - returns: A boolean value. True if validation is successful; False if validation fails.
      */
-    public func validate(_ value: String) -> Bool {
+    public func validate(value: String) -> Bool {
         return value.characters.count >= DEFAULT_LENGTH
     }
     
     /**
-     Displays error message when field has failed validation.
+     Displays error message when text field has failed validation.
      
      - returns: String of error message.
      */
